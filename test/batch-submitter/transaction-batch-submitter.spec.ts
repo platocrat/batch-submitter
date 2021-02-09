@@ -36,6 +36,7 @@ const MIN_TX_SIZE = 1_000
 const MIN_GAS_PRICE_IN_GWEI = 1
 const MAX_GAS_PRICE_IN_GWEI = 70
 const GAS_RETRY_INCREMENT = 5
+const GAS_THRESHOLD_IN_GWEI = 120
 
 // Helper functions
 interface QueueElement {
@@ -171,6 +172,7 @@ describe('TransactionBatchSubmitter', () => {
         MIN_GAS_PRICE_IN_GWEI,
         MAX_GAS_PRICE_IN_GWEI,
         GAS_RETRY_INCREMENT,
+        GAS_THRESHOLD_IN_GWEI,
         getLogger(TX_BATCH_SUBMITTER_LOG_TAG),
         false
       )
@@ -276,6 +278,7 @@ describe('TransactionBatchSubmitter', () => {
         MIN_GAS_PRICE_IN_GWEI,
         MAX_GAS_PRICE_IN_GWEI,
         GAS_RETRY_INCREMENT,
+        GAS_THRESHOLD_IN_GWEI,
         getLogger(TX_BATCH_SUBMITTER_LOG_TAG),
         false
       )
