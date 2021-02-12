@@ -26,6 +26,7 @@ import {
   EthSignTxData,
   txTypePlainText,
 } from '../coders'
+import { gasInGwei } from '../utils'
 import {
   L2Block,
   BatchElement,
@@ -211,6 +212,12 @@ export class TransactionBatchSubmitter extends BatchSubmitter {
     startBlock: number,
     endBlock: number
   ): Promise<TransactionReceipt> {
+    // Do not submit batch if gas price above threshold
+    const gasPriceInGwei = gasInGwei(await this.signer.getGasPrice())
+    if (gasPriceInGwei > this.gasThresholdInGwei) {
+      return
+    }
+
     const [batchParams, wasBatchTruncated] = await this._generateSequencerBatchParams(
       startBlock,
       endBlock
