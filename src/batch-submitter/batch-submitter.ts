@@ -1,17 +1,15 @@
 /* External Imports */
 import { Contract, Signer, utils } from 'ethers'
+import * as ynatm from 'ynatm'
 import {
-  TransactionResponse,
   TransactionReceipt,
 } from '@ethersproject/abstract-provider'
-import * as ynatm from 'ynatm'
 import { Logger } from '@eth-optimism/core-utils'
 import { OptimismProvider } from '@eth-optimism/provider'
 import { getContractFactory } from '@eth-optimism/contracts'
 
 /* Internal Imports */
 import { Address, Bytes32 } from '../coders'
-
 export interface RollupInfo {
   signer: Address
   mode: 'sequencer' | 'verifier'
